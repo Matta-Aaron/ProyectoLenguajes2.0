@@ -8,6 +8,7 @@ import Navbar from './components/navbar/Navbar';
 import ProductList from './components/product/product-list/ProductList';
 import Details from './components/product/details/Details';
 import Cart from './components/cart/Cart';
+import Login from './Login';
 import Default from './components/default/Default';
 
 function App() {
@@ -17,7 +18,8 @@ function App() {
       <Switch>
         <Route exact path="/" component={ProductList} />
         <Route exact path="/details" component={Details} />
-        <Route exact path="/cart" component={Cart} />
+              <Route exact path="/cart" component={Cart} />
+              <Route exact path="/login" component={Login} />
         <Route component={Default} />
       </Switch>
       

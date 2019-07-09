@@ -15,6 +15,16 @@ export default function Navbar() {
                         HOME
                     </Link>
                 </li>
+
+                <li className="nav-item ml-5">
+                    <Link to="/login" className="nav-link">
+
+                        <img src="https://www.iranhotels.com//assets/img/admin.png" width="35" height="35" />
+
+                        Iniciar Secion
+                    </Link>
+                </li>
+
             </ul>
             <Link to="/cart" className="ml-auto">
 
