@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
 namespace PruebaCarrito.Controllers
-{
+{   /*
     [Route("api/[controller]")]
     public class SampleDataController : Controller
     {
@@ -41,4 +41,5 @@ namespace PruebaCarrito.Controllers
             }
         }
     }
+    */
 }
