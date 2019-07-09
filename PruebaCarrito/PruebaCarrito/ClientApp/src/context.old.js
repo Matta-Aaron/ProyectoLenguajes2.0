@@ -1,5 +1,5 @@
 // OLD CONTEXT, NOT USED ANYMORE
-
+/*
 import React, { useState, useEffect } from 'react';
 import { storeProducts, detailProduct } from './data';
 
@@ -136,3 +136,4 @@ function ProductProvider(props) {
   );
 }
 export { ProductContext, ProductProvider };
+*/

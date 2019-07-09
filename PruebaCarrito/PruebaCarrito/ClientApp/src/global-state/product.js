@@ -19,7 +19,7 @@ const productReducer = (state, action) => {
         productDetails: action.payload
       };
     default:
-      throw new Error('Invalid action type');
+      throw new Error('Acción Invalida');
   }
 };
 
