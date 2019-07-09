@@ -1,4 +1,5 @@
 import React, { useReducer, createContext, useContext } from 'react';
+
 import {
   ADD_ITEM_TO_CART,
   INCREMENT_ITEM,
@@ -13,7 +14,7 @@ import { useProductState } from './product';
 const initialState = {
   cart: [],
   subtotal: 0,
-  tax: 0,
+  iva: 0,
   total: 0
 };
 
@@ -36,11 +37,11 @@ const cartReducer = (state, action) => {
         cart: action.payload
       };
     case ADD_TOTALS: {
-      const { subtotal, tax, total } = action.payload;
+      const { subtotal, iva, total } = action.payload;
       return {
         ...state,
         subtotal,
-        tax,
+        iva,
         total
       };
     }

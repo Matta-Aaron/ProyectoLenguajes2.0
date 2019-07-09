@@ -1,5 +1,4 @@
 import React from 'react';
-import Title from '../common/Title';
 import CartColumns from './CartColumns';
 import EmptyCart from './EmptyCart';
 import CartList from './CartList';
@@ -13,7 +12,8 @@ export default function Cart() {
   content =
     cart.length > 0 ? (
       <>
-        <Title name="your" title="cart" />
+          <h1 al>Tu Lista de Compras</h1>
+          <h1/>
         <CartColumns />
         <CartList cart={cart} />
         <CartTotal cartState={cartState} cartActions={cartActions} />

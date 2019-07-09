@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function CartTotal({ cartState, cartActions }) {
-  const { cart, subtotal, tax, total } = cartState;
+  const { cart, subtotal, iva, total } = cartState;
   const { addTotals, clearCart } = cartActions;
   // Updating Total value
   useEffect(() => {
@@ -18,16 +18,16 @@ export default function CartTotal({ cartState, cartActions }) {
               className="btn btn-outline-danger text-uppercase mb-3 px-5"
               type="button"
             >
-              Clear Cart
+              Limpiar Lista Productos
             </button>
           </Link>
-          <h5>
+          <h3>
             <span className="text-title">Subtotal: </span>
             <strong>${subtotal}</strong>
-          </h5>
+          </h3>
           <h5>
-            <span className="text-title">Tax: </span>
-            <strong>${tax}</strong>
+            <span className="text-title">I.V.A: </span>
+            <strong>${iva}</strong>
           </h5>
           <h5>
             <span className="text-title">Total: </span>

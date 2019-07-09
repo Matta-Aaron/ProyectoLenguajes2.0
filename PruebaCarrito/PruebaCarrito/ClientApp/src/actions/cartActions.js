@@ -30,11 +30,11 @@ export const useCartActions = ({ productState, cartState }, dispatch) => {
     let subtotal = 0;
     cartState.cart.map(item => (subtotal += item.total));
     const tempTax = subtotal * 0.1;
-    const tax = tempTax;
-    const total = subtotal + tax;
+    const iva = tempTax;
+    const total = subtotal + iva;
     dispatch({
       type: ADD_TOTALS,
-      payload: { subtotal, tax, total }
+      payload: { subtotal, iva, total }
     });
   };
 

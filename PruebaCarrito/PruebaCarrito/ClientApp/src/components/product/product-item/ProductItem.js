@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
     useProductState,
-    useCartState,
-    useModalState
+    useCartState
 } from '../../../global-state';
 
 export default function ProductItem({ product }) {
@@ -31,6 +30,9 @@ export default function ProductItem({ product }) {
                     <h5 className="text-blue font-italic mb-0">
                         <span className="mr-1">${price}</span>
                     </h5>
+                </div>
+                <div>
+                    <h1/>
                 </div>
                 <div className="card-footer d-flex justify-content-between">
                 <button
@@ -98,7 +100,7 @@ const Product = styled.div`
     padding: 0.2rem 0.4rem;
     background: var(--lightBlue);
     border: none;
-    color: var(--mainWhite);
+    color: var(--blanco);
     font-size: 1.4rem;
     border-radius: 0.5rem 0 0 0;
   }
@@ -106,7 +108,7 @@ const Product = styled.div`
     transform: translate(0, 0);
   }
   .cart-btn:hover {
-    color: var(--mainBlue);
+    color: var(--negro);
     cursor: pointer;
   }
 `;
