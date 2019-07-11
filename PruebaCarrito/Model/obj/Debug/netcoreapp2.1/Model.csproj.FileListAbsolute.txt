@@ -1,0 +1,6 @@
+C:\Users\Jeremy\Desktop\ProyectoAaron\ProyectoLenguajes2.0\PruebaCarrito\Model\bin\Debug\netcoreapp2.1\Model.deps.json
+C:\Users\Jeremy\Desktop\ProyectoAaron\ProyectoLenguajes2.0\PruebaCarrito\Model\bin\Debug\netcoreapp2.1\Model.dll
+C:\Users\Jeremy\Desktop\ProyectoAaron\ProyectoLenguajes2.0\PruebaCarrito\Model\obj\Debug\netcoreapp2.1\Model.csprojAssemblyReference.cache
+C:\Users\Jeremy\Desktop\ProyectoAaron\ProyectoLenguajes2.0\PruebaCarrito\Model\obj\Debug\netcoreapp2.1\Model.csproj.CoreCompileInputs.cache
+C:\Users\Jeremy\Desktop\ProyectoAaron\ProyectoLenguajes2.0\PruebaCarrito\Model\obj\Debug\netcoreapp2.1\Model.AssemblyInfoInputs.cache
+C:\Users\Jeremy\Desktop\ProyectoAaron\ProyectoLenguajes2.0\PruebaCarrito\Model\obj\Debug\netcoreapp2.1\Model.AssemblyInfo.cs
