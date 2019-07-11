@@ -20,9 +20,9 @@ namespace Proyecto2.Model.Data
             this.connectionString = sqlconnect;
         }
 
-        public List<Comprador> GetAll()
+        public List<CompradorData> GetAll()
         {
-            List<Comprador> comprador = new List<Comprador>();
+            List<CompradorData> comprador = new List<CompradorData>();
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
@@ -38,7 +38,7 @@ namespace Proyecto2.Model.Data
                             string password = reader.GetString(2);
                             string email = reader.GetString(3);
 
-                            comprador.Add(new Comprador(nombre, password, id,email));
+                            comprador.Add(new CompradorData(nombre, password, id,email));
                         }
                         reader.Close();
                     };
@@ -50,7 +50,7 @@ namespace Proyecto2.Model.Data
         }
 
 
-        public void InsertarComprador(Comprador comprador)
+        public void InsertarComprador(CompradorData comprador)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -68,7 +68,7 @@ namespace Proyecto2.Model.Data
         }
 
 
-        public void ActualizaComprador(Comprador comprador)
+        public void ActualizaComprador(CompradorData comprador)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
