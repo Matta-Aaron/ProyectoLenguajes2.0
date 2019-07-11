@@ -52,7 +52,8 @@ namespace Tests
 
             Assert.AreEqual("Huawei P30 Pro", productoDao.ObtenerProducto(1).Nombre);
             Assert.AreEqual(1, productoDao.ObtenerProducto(1).Id);
-            Assert.AreEqual(1029, productoDao.ObtenerProducto(1).Impuesto);
+            Assert.AreEqual(2, productoDao.ObtenerProducto(1).Impuesto);
+            Assert.AreEqual(1029, productoDao.ObtenerProducto(1).Presio);
             //Assert.AreEqual(8, productoDao.ObtenerProducto(1).Cantidad);
 
 

@@ -24,7 +24,7 @@ namespace PruebaCarrito.Model.Data
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string sql = "SELECT p.Nombre, p.Descripcion, p.Id, p.Impuesto, p.Cantidad from Producto p WHERE p.id = " + idProducto;
+                string sql = "SELECT p.Nombre, p.Descripcion, p.Id, p.Impuesto, p.Cantidad, p.Presio,p.Url from Producto p WHERE p.id = " + idProducto;
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
                     using (SqlDataReader reader = command.ExecuteReader())
@@ -36,9 +36,11 @@ namespace PruebaCarrito.Model.Data
                             int id = reader.GetInt32(2);
                             int impuesto = reader.GetInt32(3);
                             int cantidadDis = reader.GetInt32(4);
-                            
+                            int presio = reader.GetInt32(5);
+                            string url = reader.GetString(6);
 
-                            return new Producto(nombre, descripcion, id, impuesto, cantidadDis);
+
+                            return new Producto(nombre, descripcion, id, impuesto, cantidadDis,presio,url);
                         }
                         reader.Close();
                     };
@@ -56,7 +58,7 @@ namespace PruebaCarrito.Model.Data
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string sql = "SELECT p.Nombre, p.Descripcion, p.Id, p.Impuesto, p.Cantidad FROM Producto p WHERE p.id BETWEEN " + idProductoIndice + " AND " + (idProductoIndice+49);
+                string sql = "SELECT p.Nombre, p.Descripcion, p.Id, p.Impuesto, p.Cantidad,p.Presio,p.Url FROM Producto p WHERE p.id BETWEEN " + idProductoIndice + " AND " + (idProductoIndice+49);
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
                     using (SqlDataReader reader = command.ExecuteReader())
@@ -68,9 +70,11 @@ namespace PruebaCarrito.Model.Data
                             int id = reader.GetInt32(2);
                             int impuesto = reader.GetInt32(3);
                             int cantidadDis = reader.GetInt32(4);
+                            int presio = reader.GetInt32(5);
+                            string url = reader.GetString(6);
 
 
-                            producto.Add(new Producto(nombre, descripcion, id, impuesto, cantidadDis));
+                            producto.Add(new Producto (nombre, descripcion, id, impuesto, cantidadDis, presio, url));
                         }
                         reader.Close();
                     };
@@ -90,7 +94,7 @@ namespace PruebaCarrito.Model.Data
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string sql = "insert into Producto(Nombre, Descripcion, Id, Impuesto, Cantidad) values(@Nombre, @Descripcion, @Id, @Impuesto, @Cantidad)";
+                string sql = "insert into Producto(Nombre, Descripcion, Id, Impuesto, Cantidad,Presio,Url) values(@Nombre, @Descripcion, @Id, @Impuesto, @Cantidad,@Presio,@Url)";
                 string sqlInventario = "insert into Inventario(IdProducto, CantidadProducto) values (@IdProducto,@CantidadProducto)";
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
@@ -99,6 +103,9 @@ namespace PruebaCarrito.Model.Data
                     command.Parameters.Add(new SqlParameter("@Id", producto.Id));
                     command.Parameters.Add(new SqlParameter("@Impuesto", producto.Impuesto));
                     command.Parameters.Add(new SqlParameter("@Cantidad", producto.Cantidad));
+                    command.Parameters.Add(new SqlParameter("@Presio", producto.Presio));
+                    command.Parameters.Add(new SqlParameter("@Url", producto.Url));
+
                     SqlCommand commandBodega = new SqlCommand(sqlInventario, connection);
                     commandBodega.Parameters.Add(new SqlParameter("@IdProducto", inventario.IdProducto));
                     commandBodega.Parameters.Add(new SqlParameter("@CantidadProducto", inventario.CantidadProductos));
@@ -118,7 +125,7 @@ namespace PruebaCarrito.Model.Data
             {
 
                 connection.Open();
-                string sqlProducto = "update Producto set Nombre=@Nombre, Descripcion=@Descripcion,Id=@Id,Impuesto=@Impuesto,Cantidad=@Cantidad where id= " + producto.Id;
+                string sqlProducto = "update Producto set Nombre=@Nombre, Descripcion=@Descripcion,Id=@Id,Impuesto=@Impuesto,Cantidad=@Cantidad,Presio=@Presio,Url=@Url where id= " + producto.Id;
                 string sqlInventario = "update Inventario set CantidadProducto = @CantidadProducto where IdProducto = " + inventario.IdProducto;
                 using (SqlCommand command = new SqlCommand(sqlProducto, connection))
                 {
@@ -127,6 +134,9 @@ namespace PruebaCarrito.Model.Data
                     command.Parameters.AddWithValue("Id", producto.Id);
                     command.Parameters.AddWithValue("Impuesto", producto.Impuesto);
                     command.Parameters.AddWithValue("Cantidad", producto.Cantidad);
+                    command.Parameters.AddWithValue("Presio", producto.Presio);
+                    command.Parameters.AddWithValue("Url", producto.Url);
+
 
                     SqlCommand commandBodega = new SqlCommand(sqlInventario, connection);
                     commandBodega.Parameters.AddWithValue("CantidadProducto", inventario.CantidadProductos);
