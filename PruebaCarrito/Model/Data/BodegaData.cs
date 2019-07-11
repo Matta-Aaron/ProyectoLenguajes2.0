@@ -67,16 +67,33 @@ namespace PruebaCarrito.Model.Data
 
         public void Actualiza(int idProducto, int cantidadProducto)
         {
+            if (idProducto<=1)
+            {
+                idProducto = 2;
+            }
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string sql = @"UPDATE Producto SET 
+                          Cantidad = @Cantidad
+                    WHERE Id = " + idProducto;
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    command.Parameters.AddWithValue("Cantidad", cantidadProducto);
+                    command.ExecuteNonQuery();
+                }
+                connection.Close();
+            }
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
                 string sql = @"UPDATE Inventario SET 
-                          CantidadProducto = @CantidadProducto
+                          CantidadProductos = @Cantidad
                     WHERE IdProducto = " + idProducto;
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
-                    command.Parameters.AddWithValue("IdProducto", idProducto);
-                    command.Parameters.AddWithValue("CantidadProducto", cantidadProducto);
+                    command.Parameters.AddWithValue("Cantidad", cantidadProducto);
                     command.ExecuteNonQuery();
                 }
                 connection.Close();

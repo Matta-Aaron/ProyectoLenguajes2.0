@@ -21,6 +21,12 @@ namespace PruebaCarrito.Model.Data
 
         public Producto ObtenerProducto(int idProducto)
         {
+
+            if (idProducto <= 1)
+            {
+                idProducto = 2;
+            }
+
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
@@ -54,6 +60,11 @@ namespace PruebaCarrito.Model.Data
 
         public List<Producto> ObtenerProductoRango(int idProductoIndice)
         {
+            if (idProductoIndice<=1)
+            {
+                idProductoIndice = 2;
+            }
+
             List<Producto> producto = new List<Producto>();
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
