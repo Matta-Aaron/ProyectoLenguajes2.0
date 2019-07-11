@@ -10,14 +10,14 @@ namespace Proyecto2.Model.Data
     {
         private string connectionString;
 
-        string sqlconnect = "data source = " +
+        private string sqlconnect = "data source = " +
                 "163.178.173.148;initial " +
                 "catalog=ProyectoLenguajes;user id=estudiantesrp;password=estudiantesrp;" +
                 "multipleactiveresultsets=True";
 
-        public UsuarioData(string connectiostring)
+        public UsuarioData()
         {
-            this.connectionString = connectiostring;
+            this.connectionString = sqlconnect;
         }
 
         public List<Comprador> GetAll()

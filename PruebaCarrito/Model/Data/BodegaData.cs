@@ -10,14 +10,14 @@ namespace PruebaCarrito.Model.Data
     {
         private string connectionString;
 
-        string sqlconnect = "data source = " +
+        private string sqlconnect = "data source = " +
                 "163.178.173.148;initial " +
                 "catalog=ProyectoLenguajes;user id=estudiantesrp;password=estudiantesrp;" +
                 "multipleactiveresultsets=True";
 
-        public BodegaData(string connectiostring)
+        public BodegaData()
         {
-            this.connectionString = connectiostring;
+            this.connectionString = sqlconnect;
         }
 
         public List<Inventario> ObtenerBodega()

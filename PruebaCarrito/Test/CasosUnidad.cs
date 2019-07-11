@@ -1,5 +1,10 @@
+using Model.Data;
 using NUnit.Framework;
 using NUnit.Framework.Internal;
+using PruebaCarrito.Model.Data;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace Tests
 {
@@ -10,20 +15,27 @@ namespace Tests
         {
         }
 
-        [Test]
-        public void Test1()
-        {
-            Assert.Pass();
-        }
-
-
-
        [Test]
-        public void CompanniaBussinessListarProductos(int indice)
+        public void CompanniaBussinessListarProductos()
         {
-           //aqui codigo
+
+            ProductoData productoDao = new ProductoData();
+            List<Producto> lista = new List<Producto>();
+            int idProductoIndice = 1;
+            lista = productoDao.ObtenerProductoRango(idProductoIndice);
+            Assert.IsNotEmpty(lista);
+
+            idProductoIndice = 50;
+            lista = productoDao.ObtenerProductoRango(50);
+            Assert.IsEmpty(lista);
+
         }
-
-
+        
+        [Test]
+        public void CompanniaBussinessBuscarProducto()
+        {
+            
+        }
+        
     }
 }

@@ -1,9 +1,7 @@
 ﻿using Model.Data;
 using Model.Domain;
-using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Text;
+using System.Collections.Generic;
 
 namespace PruebaCarrito.Model.Data
 {
@@ -16,18 +14,17 @@ namespace PruebaCarrito.Model.Data
                 "catalog=ProyectoLenguajes;user id=estudiantesrp;password=estudiantesrp;" +
                 "multipleactiveresultsets=True";
 
-        public ProductoData(string connectiostring)
+        public ProductoData()
         {
-            this.connectionString = connectiostring;
+            this.connectionString = sqlconnect;
         }
 
-        public List<Producto> ObtenerProducto(int idProducto)
+        public Producto ObtenerProducto(int idProducto)
         {
-            List<Producto> producto = new List<Producto>();
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string sql = "select p.Nombre, p.Descripcion, p.Id, p.Impuesto, p.Cantidad from Producto p where p.id = " + idProducto;
+                string sql = "SELECT p.Nombre, p.Descripcion, p.Id, p.Impuesto, p.Cantidad from Producto p WHERE p.id = " + idProducto;
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
                     using (SqlDataReader reader = command.ExecuteReader())
@@ -40,6 +37,38 @@ namespace PruebaCarrito.Model.Data
                             int impuesto = reader.GetInt32(3);
                             int cantidadDis = reader.GetInt32(4);
                             
+
+                            return new Producto(nombre, descripcion, id, impuesto, cantidadDis);
+                        }
+                        reader.Close();
+                    };
+                }
+                connection.Close();
+            }
+
+            return null;
+        }
+
+
+        public List<Producto> ObtenerProductoRango(int idProductoIndice)
+        {
+            List<Producto> producto = new List<Producto>();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string sql = "SELECT p.Nombre, p.Descripcion, p.Id, p.Impuesto, p.Cantidad FROM Producto p WHERE p.id BETWEEN " + idProductoIndice + " AND " + (idProductoIndice+49);
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string nombre = reader.GetString(0);
+                            string descripcion = reader.GetString(1);
+                            int id = reader.GetInt32(2);
+                            int impuesto = reader.GetInt32(3);
+                            int cantidadDis = reader.GetInt32(4);
+
 
                             producto.Add(new Producto(nombre, descripcion, id, impuesto, cantidadDis));
                         }
