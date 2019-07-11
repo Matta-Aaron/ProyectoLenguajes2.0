@@ -20,7 +20,18 @@ export default function CartTotal({ cartState, cartActions }) {
             >
               Limpiar Lista Productos
             </button>
-          </Link>
+                  </Link>
+
+                  <Link to="/Envio">
+                      <button
+                          className="btn btn-outline-danger text-uppercase mb-3 px-5"
+                          type="button"
+                      >
+                          Enviar Correo
+            </button>
+                  </Link>
+
+
           <h3>
             <span className="text-title">Subtotal: </span>
             <strong>${subtotal}</strong>
