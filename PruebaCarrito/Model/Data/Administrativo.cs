@@ -10,6 +10,7 @@ namespace Model.Data
         ProductoData productoData = new ProductoData();
         BodegaData inventarioData = new BodegaData();
         CarritoData carritoData = new CarritoData();
+        CompradorData compradorData = new CompradorData();
 
         public void insertarProducto(Producto producto)
         {
@@ -112,10 +113,24 @@ namespace Model.Data
 
        public bool PermitirAcceso(string usuario,string password)
         {
-            return false;
+            bool encontrado = false;
 
+            List<Comprador> listaCompradores = compradorData.ObtenerCompradores();
+
+            for (int i = 0; i < listaCompradores.Count; i++)
+            {
+                if (listaCompradores[i].Nombre.Equals(usuario)&& listaCompradores[i].Password.Equals(password))
+                {
+                     encontrado = true;
+                }
+            }
+            return encontrado;
 
         }
+
+
+
+
 
     }
 }

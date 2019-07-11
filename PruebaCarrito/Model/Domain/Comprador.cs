@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Model.Data
 {
-    public class CompradorData
+    public class Comprador
     {
         private string nombre;
         private string password;
@@ -12,7 +12,7 @@ namespace Model.Data
         private string email;
 
 
-        public CompradorData(string nombre, string password, int id, string email)
+        public Comprador(string nombre, string password, int id, string email)
         {
             if (string.IsNullOrEmpty(nombre) ||
                 string.IsNullOrWhiteSpace(nombre)) throw new Exception("El nombre no puede ser nulo");
