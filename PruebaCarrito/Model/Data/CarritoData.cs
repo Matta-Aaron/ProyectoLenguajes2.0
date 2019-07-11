@@ -231,5 +231,65 @@ namespace Model.Data
                 connection.Close();
             }
         }
+
+
+
+        public List<Producto> ObtenerProdusctosCarrito(int idUsuario)
+        {
+
+            Carrito carrito;
+            List<Producto> listaProductos = new List<Producto>();
+            List<int> idProductos = new List<int>();
+            int idCarrito = 0;
+            int cantidadProductos = 0;
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string sql = "SELECT c.IdCarrito, c.CantidadProductos FROM Carrito c WHERE c.IdUsuario = " + idUsuario;
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+
+                            idCarrito = reader.GetInt32(0);
+                            cantidadProductos = reader.GetInt32(1);
+
+
+                        }
+
+                        reader.Close();
+
+                    };
+                }
+
+                connection.Close();
+
+            }
+
+            if (idCarrito != 0)
+            {
+
+                idProductos = ObtenerIdProductos(idUsuario);
+
+                listaProductos = ObtenerProductos(idProductos);
+                carrito = new Carrito(idUsuario, idCarrito, listaProductos, cantidadProductos);
+                return listaProductos;
+
+            }
+            else
+            {
+                idCarrito = conteoCarritos(idUsuario) + 1;
+                listaProductos.Add(new Producto(1));
+                carrito = new Carrito(idUsuario, idCarrito, listaProductos, cantidadProductos);
+                InsertarCarrito(carrito);
+                return listaProductos;
+            }
+
+        }
+
     }
 }
