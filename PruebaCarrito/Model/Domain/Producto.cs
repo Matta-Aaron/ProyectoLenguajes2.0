@@ -21,7 +21,7 @@ namespace Model.Data
             if (string.IsNullOrEmpty(descripcion) ||
                 string.IsNullOrWhiteSpace(descripcion)) throw new Exception("La descripcion no puede ser nulo");
             if (id <= 0) throw new Exception("El id del producto debe ser un numero positivo o diferente de cero");
-            if (precio <= 0) throw new Exception("El precio del producto debe ser un numero positivo o diferente de cero");
+            if (precio < 0) throw new Exception("El precio del producto debe ser un numero positivo o diferente de cero");
             if (string.IsNullOrEmpty(url) ||
                string.IsNullOrWhiteSpace(url)) throw new Exception("La url no puede ser nulo");
 
