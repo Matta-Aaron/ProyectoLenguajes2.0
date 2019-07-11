@@ -91,6 +91,7 @@ namespace Model.Data
                     throw new Exception("Valor invalido");
                 }
 
+
                 impuesto = value;
             }
         }

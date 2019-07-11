@@ -10,11 +10,12 @@ namespace Tests
 {
     public class Tests
     {
+
         [SetUp]
         public void Setup()
         {
         }
-
+        
        [Test]
         public void CompanniaBussinessListarProductos()
         {
@@ -34,8 +35,55 @@ namespace Tests
         [Test]
         public void CompanniaBussinessBuscarProducto()
         {
+
+            ProductoData productoDao = new ProductoData();
+            Producto producto;
+            int idProductoIndice = 1;
+            producto = productoDao.ObtenerProducto(idProductoIndice);
+            Assert.IsNotNull(producto);
             
         }
-        
+
+        [Test]
+        public void CompanniaBussinessBuscarProducto2()
+        {
+
+            ProductoData productoDao = new ProductoData();
+
+            Assert.AreEqual("Huawei P30 Pro", productoDao.ObtenerProducto(1).Nombre);
+            Assert.AreEqual(1, productoDao.ObtenerProducto(1).Id);
+            Assert.AreEqual(1029, productoDao.ObtenerProducto(1).Impuesto);
+            //Assert.AreEqual(8, productoDao.ObtenerProducto(1).Cantidad);
+
+
+
+        }
+
+
+        [Test]
+        public void CompanniaBussinessActualizarInventario()
+        {
+
+            BodegaData bodegaData = new BodegaData();
+
+            bodegaData.Actualiza(1, 8);
+
+            ProductoData productoDao = new ProductoData();
+            Assert.AreEqual(8, productoDao.ObtenerProducto(1).Cantidad);
+
+        }
+
+
+        [Test]
+        public void CompanniaBussinessRecuperarCarrito()
+        {
+
+            CarritoData carritoDao = new CarritoData();
+            Carrito carrito;
+            carrito = carritoDao.ObtenerCarrito(2);
+            Assert.IsNotNull(carrito);
+
+        }
+
     }
 }

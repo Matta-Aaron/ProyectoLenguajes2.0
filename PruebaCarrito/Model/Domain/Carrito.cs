@@ -6,40 +6,45 @@ namespace Model.Data
 {
     public class Carrito
     {
-        private string usuario;
+        private int idUsuario;
         private int id;
-        private List<Producto> listaProdcutos;
+        private List<Producto> listaProductos;
+        private int cantidadProducto;
 
-        public Carrito(string usuario, string password, int id)
+
+        public Carrito(int idUsuario, int id, List<Producto> listaProductos, int cantidadProducto)
         {
-            if (string.IsNullOrEmpty(usuario) ||
-                string.IsNullOrWhiteSpace(usuario)) throw new Exception("El usuario no puede ser nulo");
-            if (id <= 0) throw new Exception("El id del carrito debe ser un numero positivo o diferente de cero");
-            
-            this.usuario = usuario;
+
+            if (idUsuario <= 0) throw new Exception("El idUsuario no puede ser nulo");
+            if (id <= 0) throw new Exception("El id no puede ser nulo");
+
+            this.idUsuario = idUsuario;
             this.id = id;
-           
+            this.listaProductos = listaProductos;
+            this.cantidadProducto = cantidadProducto;
+
         }
 
-        public string Usuario
+        public int IdUsuario
         {
             get
             {
-                return usuario;
+                return idUsuario;
             }
             set
             {
-                if (value == null)
+                if (value <= 0)
                 {
                     throw new Exception("Valor invalido");
                 }
 
-                usuario = value;
+                idUsuario = value;
             }
         }
 
         public int Id
         {
+
             get
             {
                 return id;
@@ -53,7 +58,41 @@ namespace Model.Data
 
                 id = value;
             }
+
         }
-        
+
+
+        public List<Producto> ListaProductos
+        {
+            get
+            {
+                return listaProductos;
+            }
+            set
+            {
+                listaProductos = value;
+            }
+        }
+
+
+        public int CantidadProducto
+        {
+
+            get
+            {
+                return cantidadProducto;
+            }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new Exception("Valor invalido");
+                }
+
+                cantidadProducto = value;
+            }
+
+        }
+
     }
 }
