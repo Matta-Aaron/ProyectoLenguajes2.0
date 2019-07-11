@@ -5,7 +5,9 @@ VisualStudioVersion = 15.0.28307.489
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PruebaCarrito", "PruebaCarrito\PruebaCarrito.csproj", "{7F4149CF-0146-401B-B80B-869330504675}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{85319830-5B73-4346-9F22-873F52C15F5C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model", "Model\Model.csproj", "{85319830-5B73-4346-9F22-873F52C15F5C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{8C1B5245-0F5B-44FA-BBC3-2E9F2AEDAB1B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{85319830-5B73-4346-9F22-873F52C15F5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{85319830-5B73-4346-9F22-873F52C15F5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{85319830-5B73-4346-9F22-873F52C15F5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C1B5245-0F5B-44FA-BBC3-2E9F2AEDAB1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C1B5245-0F5B-44FA-BBC3-2E9F2AEDAB1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C1B5245-0F5B-44FA-BBC3-2E9F2AEDAB1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C1B5245-0F5B-44FA-BBC3-2E9F2AEDAB1B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
