@@ -1,4 +1,5 @@
-﻿using PruebaCarrito.Model.Data;
+﻿using Model.Domain;
+using PruebaCarrito.Model.Data;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -290,6 +291,21 @@ namespace Model.Data
             }
 
         }
+        /*
+        public OrdenCompra ordenCompra (Carrito carrito, string direccion, string estado)
+        {
+            int sumaTotal = 0;
+            List<Producto> productoslista = new List<Producto>();
+            productoslista = ObtenerProductos(ObtenerIdProductos(carrito.IdUsuario));
+
+            for (int i = 0; i < productoslista.Count; i++)
+            {
+
+                sumaTotal += (productoslista[i].Presio * carrito.);
+            }
+
+        }
+        */
 
     }
 }
