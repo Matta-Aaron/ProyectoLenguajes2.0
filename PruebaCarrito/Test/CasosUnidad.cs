@@ -86,5 +86,21 @@ namespace Tests
 
         }
 
+        [Test]
+        public void CompanniaBussinessAgregar()
+        {
+
+            CarritoData carritoDao = new CarritoData();
+            List<Producto> listaProducto = new List<Producto>();
+            listaProducto.Add(new Producto());
+            Carrito carrito = new Carrito();
+            
+            Assert.IsNotNull(carrito);
+
+        }
+        
+
+
+
     }
 }

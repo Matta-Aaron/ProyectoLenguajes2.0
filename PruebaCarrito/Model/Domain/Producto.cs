@@ -11,17 +11,17 @@ namespace Model.Data
         private int id;
         private int impuesto;
         private int cantidad;
-        private int presio;
+        private int precio;
         private string url;
 
-        public Producto(string nombre, string descripcion, int id, int impuesto, int cantidad,int presio,string url)
+        public Producto(string nombre, string descripcion, int id, int impuesto, int cantidad,int precio,string url)
         {
             if (string.IsNullOrEmpty(nombre) ||
                 string.IsNullOrWhiteSpace(nombre)) throw new Exception("El nombre no puede ser nulo");
             if (string.IsNullOrEmpty(descripcion) ||
                 string.IsNullOrWhiteSpace(descripcion)) throw new Exception("La descripcion no puede ser nulo");
             if (id <= 0) throw new Exception("El id del producto debe ser un numero positivo o diferente de cero");
-            if (presio <= 0) throw new Exception("El precio del producto debe ser un numero positivo o diferente de cero");
+            if (precio <= 0) throw new Exception("El precio del producto debe ser un numero positivo o diferente de cero");
             if (string.IsNullOrEmpty(url) ||
                string.IsNullOrWhiteSpace(url)) throw new Exception("La url no puede ser nulo");
 
@@ -30,8 +30,16 @@ namespace Model.Data
             this.id = id;
             this.impuesto = impuesto;
             this.cantidad = cantidad;
-            this.presio = presio;
+            this.precio = precio;
             this.url = url;
+        }
+
+        public Producto( int id)
+        {
+            
+            if (id <= 0) throw new Exception("El id del producto debe ser un numero positivo o diferente de cero");
+            
+            this.id = id;
         }
 
         public string Nombre
@@ -123,7 +131,7 @@ namespace Model.Data
         {
             get
             {
-                return presio;
+                return precio;
             }
             set
             {
@@ -132,7 +140,7 @@ namespace Model.Data
                     throw new Exception("Valor invalido");
                 }
 
-                presio = value;
+                precio = value;
             }
         }
 

@@ -20,13 +20,13 @@ namespace Model.Data
             this.connectionString = sqlconnect;
         }
 
-        public int conteoCarritos()
+        public int conteoCarritos(int idUsuario)
         {
-            int numeroCarrito = 0;   
+            int numeroCarrito = 0;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string sql = "SELECT COUNT(IdCarrito) FROM Carrito";
+                string sql = "SELECT COUNT(IdCarrito) FROM Carrito WHERE IdUsuario = " + idUsuario;
 
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
@@ -98,8 +98,8 @@ namespace Model.Data
             }
             else
             {
-                idCarrito = conteoCarritos();
-                listaProductos.Add(new Producto("SinProducto", "SinProducto", 1, 0, 0));
+                idCarrito = conteoCarritos(idUsuario) + 1;
+                listaProductos.Add(new Producto( 1 ));
                 carrito = new Carrito(idUsuario, idCarrito, listaProductos, cantidadProductos);
                 InsertarCarrito(carrito);
                 return ObtenerCarrito(idUsuario);
@@ -150,7 +150,6 @@ namespace Model.Data
         }
 
 
-
         public void InsertarCarrito(Carrito carrito)
         {
             List<Producto> lista = new List<Producto>();
@@ -166,7 +165,7 @@ namespace Model.Data
                     if (lista.Count <= 0)
                     {
                         command.Parameters.Add(new SqlParameter("@IdProducto", carrito.ListaProductos[0].Id));
-                        command.Parameters.Add(new SqlParameter("@IdCarrito", conteoCarritos()));
+                        command.Parameters.Add(new SqlParameter("@IdCarrito", conteoCarritos(carrito.IdUsuario)));
                         command.Parameters.Add(new SqlParameter("@IdUsuario", carrito.IdUsuario));
                         command.Parameters.Add(new SqlParameter("@CantidadProductos", carrito.CantidadProducto));
                         command.ExecuteNonQuery();
@@ -189,7 +188,7 @@ namespace Model.Data
         }
 
 
-        public void ActualizaCarrito (Carrito carrito)
+        public void ActualizaCarrito(Carrito carrito)
         {
 
             List<Producto> lista = new List<Producto>();
@@ -226,7 +225,7 @@ namespace Model.Data
                 string sql = "DELETE Carrito WHERE IdCarrito = " + idCarrito;
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
-                    
+
                     command.ExecuteNonQuery();
                 }
                 connection.Close();
